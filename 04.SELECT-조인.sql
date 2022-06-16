@@ -1,3 +1,4 @@
+
 /****************SELECT문실행순서************************
 - FROM, JOIN > WHERE, GROUP BY, HAVING > SELECT > ORDER BY
 
