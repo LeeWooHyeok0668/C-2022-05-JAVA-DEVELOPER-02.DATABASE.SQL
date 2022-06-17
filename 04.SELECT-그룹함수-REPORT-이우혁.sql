@@ -42,7 +42,7 @@ order by "년","월";
 select to_char(hiredate, 'YYYY') "연도",(case when to_char(hiredate,'MM')='1' than sum(sal) end),sum(sal) "연도별급여합"
 from emp
 group by to_char(hiredate, 'YYYY')
-order by "연도"
+order by "연도";
 
 
 /*
@@ -50,10 +50,20 @@ order by "연도"
    포함한 연봉의 합을 구하는 SQL을 작성하시오.
 */
 -- 커미션 포함 X
-
+select deptno,sum(sal*12)
+from emp
+group by deptno
+order by deptno;
 -- 커미션 포함 
-
-
+select deptno,sum((sal+nvl(comm,0))*12)
+from emp
+group by deptno
+order by deptno;
 /*
 5. 사원테이블에서 SALESMAN을 제외한 JOB별 급여합계를 구하시오.
 */
+select job,sum(sal)
+from emp
+group by job
+having job !='SALESMAN'
+order by job;

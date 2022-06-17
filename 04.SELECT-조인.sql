@@ -1,4 +1,3 @@
-
 /****************SELECT문실행순서************************
 - FROM, JOIN > WHERE, GROUP BY, HAVING > SELECT > ORDER BY
 
@@ -155,51 +154,59 @@ on e.deptno=d.deptno;
 
 --self join
 /*
-사원과 매니져이름출력
+사원과매니져이름출력
 inner join(매니져가 존재하는사원)
 */
-select   e.empno "사원번호"
-        ,e.ename "사원이름"
-        ,e.mgr   "사원매니져번호"
-        ,m.empno "매니져사원번호"
-        ,m.ename "매니져사원이름"
+select  e.empno "사원번호",
+        e.ename "사원이름",
+        e.mgr "사원매니져번호",
+        m.empno "매니져사원번호",
+        m.ename "매니져사원이름"
 from emp e inner join emp m
-on e.mgr=m.empno;
+on e.mgr=m.empno; 
 /*
-outer join(매니져가 존재하지 않는사원도정보출력)
+outer join(매니져가 존재하지않는사원도출력)
 */
-select   e.empno "사원번호"
-        ,e.ename "사원이름"
-        ,e.mgr   "사원매니져번호"
-        ,m.empno "매니져사원번호"
-        ,m.ename "매니져사원이름"
+select  e.empno,
+        e.ename,
+        e.mgr,
+        m.empno,
+        m.ename
 from emp e left outer join emp m
-on e.mgr=m.empno;
+on e.mgr=m.empno; 
 
 
 /*
- on조인조건 filtering하는경우와 
- where 구문에서 filtering하는경우
+ on조인조건  filtering하는경우와 
+ where 구문에서 filtering  하는경우
+ outer join시에 차이가발생
 */
 --inner join
-select e.empno,e.ename,e.sal,d.dname,d.loc
+select e.empno,e.ename,e.sal,d.dname,d.loc 
 from emp e 
 inner join dept d
 on e.deptno=d.deptno and e.sal>1000;
 
-select e.empno,e.ename,e.sal,d.dname,d.loc
+select e.empno,e.ename,e.sal,d.dname,d.loc 
 from emp e 
 inner join dept d
-on e.deptno=d.deptno 
+on e.deptno=d.deptno
 where e.sal>1000;
---outer join
-select e.empno,e.ename,e.sal,d.dname,d.loc
-from emp e 
-left outer join dept d
-on e.deptno=d.deptno and e.sal>1000;--outer join 일때 and뒤에 조건은 반영x
 
-select e.empno,e.ename,e.sal,d.dname,d.loc
+--outer join
+select e.empno,e.ename,e.sal,d.dname,d.loc 
 from emp e 
 left outer join dept d
-on e.deptno=d.deptno 
+on e.deptno=d.deptno and e.sal>1000;
+
+select e.empno,e.ename,e.sal,d.dname,d.loc 
+from emp e 
+left outer join dept d
+on e.deptno=d.deptno
 where e.sal>1000;
+
+
+
+
+
+
