@@ -64,7 +64,25 @@ where e.sal>=g.losal and e.sal<=g.hisal;
 
 select s.studno,s.name,s.deptno1,d.dname,s.profno,p.name 
 from student s,department d,professor p
-where s.deptno1=d.deptno and s.profno=p.profno(+);
+where s.deptno1=d.deptno and s.profno = p.profno(+);
+
+--select * from student e
+--right outer join professor p
+--on e.profno = p.profno;
+
+--self join
+--inner join
+select e.empno,e.ename,e.mgr,m.ename,m.ename
+from emp e,emp m
+where e.mgr=m.empno;
+--left outer join(매니져가 없는 사원도출력)
+select e.empno,e.ename,e.mgr,m.ename,m.ename
+from emp e,emp m
+where e.mgr=m.empno(+);
+----right outer join(사원이 없는 매니져도출력)
+--select e.empno,e.ename,e.mgr,m.ename,m.ename
+--from emp e,emp m
+--where e.mgr(+)=m.empno;
 
 
 
