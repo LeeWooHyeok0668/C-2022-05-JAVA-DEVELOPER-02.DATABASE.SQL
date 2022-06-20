@@ -23,9 +23,9 @@ where sal> (select avg(sal) from emp);
    사원들의 사번, 이름 , 급여를 검색하시오.
 */
 select empno 사번,ename 이름,sal 급여
-form emp
-where sal > (select sal from emp where empno = 7698)
-            and deptno = (select deptno from emp where ename = 'CLARK');
+from emp
+where deptno = (select deptno from emp where ename = 'CLARK')
+            and sal > (select sal from emp where empno = 7698);
 /*
 5. 사원 테이블에서 부서별 최대 급여를 받는 사원들의 사번, 이름, 부서코드, 급여를 검색하시오.
 */
