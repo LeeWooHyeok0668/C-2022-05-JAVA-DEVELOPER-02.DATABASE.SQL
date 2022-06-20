@@ -126,3 +126,12 @@ update emp set job='SALESMAN' where job is null;
 update emp set deptno=40 where deptno is null;
 update emp set ename='아이티' where empno=9004;
 commit;
+
+--delete
+delete from dept where deptno=90;
+--1 행 이(가) 삭제되었습니다.
+--delete dept where deptno=91;
+--ORA-02292: integrity constraint (SCOTT.FK_DEPTNO) violated - child record found
+delete from dept where dname like '영업%';
+delete form dept where deptno >= 92;
+
